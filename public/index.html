@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Joey Zero</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="scene">
+    <video id="main-video" playsinline muted autoplay loop></video>
+
+    <div id="subtitle-overlay" aria-live="polite"></div>
+
+    <form id="question-form" autocomplete="off">
+      <div id="input-wrap">
+        <input
+          id="question-input"
+          type="text"
+          placeholder="Ask Joey a question…"
+          maxlength="200"
+          disabled
+        />
+        <button type="submit" id="submit-btn" disabled aria-label="Ask">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </div>
+      <p id="click-hint">Click to ask a question</p>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

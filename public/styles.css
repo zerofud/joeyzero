@@ -1,0 +1,182 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+/* ── Scene ─────────────────────────────────────────── */
+#scene {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* ── Video ─────────────────────────────────────────── */
+#main-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #111;
+}
+
+/* ── Subtitle overlay ───────────────────────────────── */
+#subtitle-overlay {
+  position: absolute;
+  bottom: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(800px, 88vw);
+  text-align: center;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.45;
+  text-shadow:
+    0 2px 8px rgba(0,0,0,0.9),
+    0 0 20px rgba(0,0,0,0.7);
+  pointer-events: none;
+  min-height: 3em;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#subtitle-overlay.visible {
+  opacity: 1;
+}
+
+/* ── Question form ──────────────────────────────────── */
+#question-form {
+  position: relative;
+  z-index: 10;
+  width: min(640px, 90vw);
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+#input-wrap {
+  display: flex;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(14px) saturate(180%);
+  -webkit-backdrop-filter: blur(14px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 999px;
+  padding: 6px 6px 6px 22px;
+  gap: 8px;
+  transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+#input-wrap:focus-within {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Clickable overlay on the whole form when in IDLE state */
+#question-form.idle-clickable {
+  cursor: pointer;
+}
+
+#question-form.idle-clickable #input-wrap {
+  pointer-events: none;
+}
+
+#question-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 1rem;
+  caret-color: #fff;
+}
+
+#question-input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+#question-input:disabled {
+  cursor: default;
+}
+
+#submit-btn {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: #fff;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+#submit-btn:hover:not(:disabled) {
+  background: #e0e0e0;
+}
+
+#submit-btn:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+#submit-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+#submit-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* ── Click hint ─────────────────────────────────────── */
+#click-hint {
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+
+#click-hint.hidden {
+  opacity: 0;
+}
+
+/* ── Loading spinner on submit btn ─────────────────── */
+#submit-btn.loading svg {
+  display: none;
+}
+
+#submit-btn.loading::after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  border: 2px solid #bbb;
+  border-top-color: #111;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
