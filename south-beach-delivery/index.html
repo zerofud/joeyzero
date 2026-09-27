@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0b14">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="description" content="A top-down, GTA 2 style delivery driver game set in South Beach, Miami.">
+  <title>South Beach Delivery</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23da291c'/%3E%3Ctext x='32' y='47' font-family='Arial Black,Arial' font-weight='900' font-size='40' text-anchor='middle' fill='%23ffc72c'%3EM%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="game" aria-label="South Beach Delivery game"></canvas>
+
+  <div id="topButtons">
+    <button id="btnMute" type="button" aria-label="Toggle sound">🔊</button>
+    <button id="btnPause" type="button" aria-label="Pause">❚❚</button>
+  </div>
+
+  <div id="touch" hidden>
+    <div class="pad pad-left">
+      <button type="button" data-key="left" aria-label="Steer left">◀</button>
+      <button type="button" data-key="right" aria-label="Steer right">▶</button>
+    </div>
+    <div class="pad pad-right">
+      <button type="button" data-key="hb" class="hb" aria-label="Handbrake">DRIFT</button>
+      <button type="button" data-key="brake" class="brake" aria-label="Brake and reverse">BRAKE</button>
+      <button type="button" data-key="gas" class="gas" aria-label="Gas">GAS</button>
+    </div>
+  </div>
+
+  <div id="start" class="overlay">
+    <div class="card">
+      <div class="logo">
+        <span class="l1">SOUTH BEACH</span>
+        <span class="l2">DELIVERY</span>
+      </div>
+      <p class="tag">Grab the order at McDonald's on Collins Ave, race it across South Beach, get paid, repeat.</p>
+      <div class="controls desktop-only">
+        <div><kbd>W</kbd> / <kbd>↑</kbd> Gas</div>
+        <div><kbd>S</kbd> / <kbd>↓</kbd> Brake / reverse</div>
+        <div><kbd>A</kbd> <kbd>D</kbd> / <kbd>←</kbd> <kbd>→</kbd> Steer</div>
+        <div><kbd>Space</kbd> Handbrake drift</div>
+        <div><kbd>P</kbd> Pause &nbsp; <kbd>M</kbd> Mute</div>
+      </div>
+      <div class="controls touch-only">
+        <div>Left thumb: <b>◀ ▶</b> steer</div>
+        <div>Right thumb: <b>GAS</b>, <b>BRAKE</b> (hold to reverse), <b>DRIFT</b></div>
+      </div>
+      <p class="how">Stop inside the glowing ring to pick up or drop off. Deliver fast and don't crash, because a smashed meal earns a smaller tip.</p>
+      <button id="btnStart" type="button" class="big">START SHIFT</button>
+      <p id="best" class="best"></p>
+    </div>
+  </div>
+
+  <div id="pause" class="overlay" hidden>
+    <div class="card">
+      <h2>PAUSED</h2>
+      <p id="pauseStats" class="best"></p>
+      <button id="btnResume" type="button" class="big">RESUME</button>
+      <button id="btnRestart" type="button" class="ghost">New shift</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>

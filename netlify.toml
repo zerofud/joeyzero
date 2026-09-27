@@ -1,0 +1,10 @@
+# Netlify deploys the South Beach Delivery game (a static site, no build step).
+[build]
+  publish = "south-beach-delivery"
+  command = ""
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

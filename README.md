@@ -2,6 +2,8 @@
 
 An interactive personal microsite. A visitor sees a looping video of you at your desk. When they click the input box, a walk-up clip plays, then they can type a question which you answer via animated subtitles powered by the Claude API.
 
+> **Also in this repo:** [South Beach Delivery](south-beach-delivery/README.md), a GTA 2 style delivery game that deploys to Netlify.
+
 ---
 
 ## Setup
